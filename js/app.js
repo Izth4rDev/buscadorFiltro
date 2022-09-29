@@ -133,7 +133,28 @@ function filtrarAuto(){
     //se pueden encadenar los filtrados si hay mas de una opcion de filtrado
     const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMin).filter(filtrarMax).filter(filtrarPuertas).filter(filtrarTrans).filter(filtrarColor);
     console.log(resultado);
-    mostrarAutos(resultado)
+    
+
+    if(resultado.length){
+
+        mostrarAutos(resultado);
+
+    }else{
+        
+        noResultado();
+        
+    }
+}
+
+//funcion que imprime que no hay resultado de busqueda
+function noResultado (){
+
+    limpiarHtml();
+
+    const mensaje = document.createElement('div');
+    mensaje.classList.add('alerta', 'error');
+    mensaje.textContent = 'no se han encontrado resultados';
+    resultado.appendChild(mensaje);
 
 }
 
